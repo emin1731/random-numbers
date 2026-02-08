@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Generator {
     private Random random;
-    private static final int[] sampleSizes = {10, 100, 1000};
+    private static int[] sampleSizes = {10, 100, 1000};
 
     Generator() {
         this.random = new Random();
@@ -90,15 +90,16 @@ public class Generator {
     // Displays the results in a tabular format in the system console, with or without a header.
     void display(ArrayList<Double> results, boolean headerOn)
     {
+        System.out.println("--------------------------------------------------------------------");
         if (headerOn) {
-                System.out.println("n | \tmean | \tstddev | \tmin | \tmax ");
+                System.out.printf("%-15s %-15s %-15s %-15s %-15s%n","n", "Mean", "Std Dev", "Min", "Max");
             }
+        System.out.println("--------------------------------------------------------------------");
 
-        for (Double item : results) {
-            System.out.print(item + "\t");
-        }
-
+        System.out.printf("%-15.0f %-15.6f %-15.6f %-15.6f %-15.6f%n", results.get(0), results.get(1), results.get(2), results.get(3), results.get(4));
+        
         System.out.println();
+        System.out.println("--------------------------------------------------------------------");
 
     }
 
@@ -111,7 +112,9 @@ public class Generator {
             for (int randNumGen = 0; randNumGen < 3; randNumGen++) {
                 ArrayList<Double> randomValues = this.populate(sampleSize, randNumGen);
                 ArrayList<Double> results = this.statistics(randomValues);
+                System.out.printf("Random Number Generator: %d, Sample Size: %d%n", randNumGen, sampleSize);
                 this.display(results, headerOn);
+                System.out.println("\n");
             }
         }
 
