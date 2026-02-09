@@ -1,18 +1,41 @@
 import java.util.ArrayList;
+
+// packages for random number generation
 import java.util.Random;
 import java.lang.Math;
 import java.util.concurrent.ThreadLocalRandom;
 
-
+/**
+ * This is an example of class definition.
+ * Generator class: responsible for generating random numbers, calculating statistics, and displaying results. 
+ * Has three main methods: populate, statistics, and display, and an execute method that operates the entire process.
+ */
 public class Generator {
+
+    // This is an example of class attribute and accessibility: Instance variable to hold the random number generator
     private Random random;
+
+    // This is an example of class attribute and accessibility: Array of sample sizes to be used in the execute method
     private static int[] sampleSizes = {10, 100, 1000};
 
-    Generator() {
+    // Constructor to initialize the random number generator (java.util.Random)
+    public Generator() {
         this.random = new Random();
     }
 
-    // Creates and returns an ArrayList of n random numbers using one of the three random number generators.
+/**
+ * This is an example of method definition. 
+ * Method creates and returns an ArrayList of n random numbers using one of the three random number generators.
+ * The method takes two parameters: n (the number of random numbers to generate) and randNumGen (an index to select the random number generator).
+ * The method uses a switch statement to determine which random number generator to use based on the value of randNumGen: 
+ * - 0 for java.util.Random, 
+ * - 1 for Math.random(), and 
+ * - 2 for ThreadLocalRandom.
+ * The generated random numbers are stored in an ArrayList and returned at the end of the method.
+ * @param n the number of random numbers to generate
+ * @param randNumGen the index to select the random number generator (0 for java.util.Random, 1 for Math.random(), 2 for ThreadLocalRandom)
+ * @return an ArrayList of generated random numbers
+ */
     ArrayList<Double> populate(int n, int randNumGen) {
         ArrayList<Double> randomValues = new ArrayList<Double>();
 
@@ -38,8 +61,13 @@ public class Generator {
         return randomValues;
     }
 
-    // Calculates the number of elements (n), mean, sample standard deviation, minimum, and maximum, and returns the results in the following order: 
-    // [n, mean, stddev, min, max]
+/**
+ * This is an example of method definition. 
+ * Method calculates the number of elements (n), mean, sample standard deviation, minimum, and maximum, and returns the results in the following order: 
+ * [n, mean, stddev, min, max]
+ * @param randomValues an ArrayList of random numbers for which to calculate statistics
+ * @return an ArrayList containing the calculated statistics in the order: [n, mean,
+ */
     ArrayList<Double> statistics(ArrayList<Double> randomValues)
     {
         double n = randomValues.size();
@@ -87,7 +115,15 @@ public class Generator {
         return results;
     }
 
-    // Displays the results in a tabular format in the system console, with or without a header.
+    /**
+     * This is an example of method definition.
+     * Method takes an ArrayList of results and a boolean headerOn as parameters. 
+     * If headerOn is true, the method prints a header row before displaying the results. 
+     * The results are displayed in a formatted manner, showing n, mean, standard deviation, minimum, and maximum values.
+     * @param results
+     * @param headerOn
+     * @return void
+     */
     void display(ArrayList<Double> results, boolean headerOn)
     {
         System.out.println("--------------------------------------------------------------------");
@@ -103,7 +139,12 @@ public class Generator {
 
     }
 
-    // Calls the populate, statistics, and display methods for all combinations of n values and random number generators, producing a total of nine results.
+    /** 
+     * This is an example of method definition.
+     * Method iterates through the predefined sample sizes and random number generators, calling the populate, statistics, and display methods for each combination. 
+     * It prints the results in a formatted manner, showing the random number generator used, the sample size, and the calculated statistics (n, mean, standard deviation, minimum, and maximum).
+     * @return void
+     */
     void execute()
     {
         boolean headerOn = true;
@@ -119,4 +160,18 @@ public class Generator {
         }
 
     }
+
+/**
+ * This is an example of method definition and accessibility.
+ * The main method is an entry point of the program and is defined as public static void main(String[] args).
+ * In the main method, an instance of the Generator class is created, and the execute method is called to run the random number generation and statistics calculation process.
+ * @param args command line arguments (it is not used in this program)
+ */
+    public static void main(String[] args) {
+
+        // This is an example of Object instantiation: Creating an instance of the Generator class and calling the execute method to run the random number generation and statistics calculation process.
+        Generator g = new Generator();
+        g.execute();
+
+    }    
 }
