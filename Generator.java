@@ -37,6 +37,15 @@ public class Generator {
  * @return an ArrayList of generated random numbers
  */
     ArrayList<Double> populate(int n, int randNumGen) {
+
+        // Validate the input parameters
+        if(n <= 0) {
+            throw new IllegalArgumentException("Sample size must be greater than 0");
+        }
+        if (!(randNumGen >= 0 && randNumGen <= 2)) {
+            throw new IllegalArgumentException("Invalid random number generator index: " + randNumGen + ". Valid values are 0 for java.util.Random, 1 for Math.random(), and 2 for ThreadLocalRandom.");
+        }
+
         ArrayList<Double> randomValues = new ArrayList<Double>();
 
         for (int i = 0; i < n; i++) {
@@ -53,7 +62,7 @@ public class Generator {
                     randomValue = ThreadLocalRandom.current().nextDouble();
                     break;
                 default:
-                    throw new IllegalArgumentException("Invalid random number generator index: " + randNumGen);
+                    throw new IllegalArgumentException("Invalid random number generator index: " + randNumGen + ". Valid values are 0 for java.util.Random, 1 for Math.random(), and 2 for ThreadLocalRandom.");
             }
             randomValues.add(randomValue);
         }
@@ -66,7 +75,7 @@ public class Generator {
  * Method calculates the number of elements (n), mean, sample standard deviation, minimum, and maximum, and returns the results in the following order: 
  * [n, mean, stddev, min, max]
  * @param randomValues an ArrayList of random numbers for which to calculate statistics
- * @return an ArrayList containing the calculated statistics in the order: [n, mean,
+ * @return an ArrayList containing the calculated statistics in the order: [n, mean, stddev, min, max]
  */
     ArrayList<Double> statistics(ArrayList<Double> randomValues)
     {

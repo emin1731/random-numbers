@@ -8,7 +8,7 @@ This Java program demonstrates random number generation and statistical analysis
 
 ## Key component of the code:
 
-1. **Class Definition**
+1. **Class Definition**s
 
 ```java
     public class Generator {...}
@@ -71,8 +71,14 @@ n               Mean            Std Dev         Min             Max
 
 This table will be printed 9 times for each size n and for all three random number generators
 
-## Random Number Generators Used:
+### Random Number Generators Used:
 
-java.util.Random: Thread-safe, uses linear congruential formula
-Math.random(): Static method, internally uses java.util.Random
-ThreadLocalRandom: High-performance, thread-local random generator
+- java.util.Random: Thread-safe, uses linear congruential formula
+- Math.random(): Static method, internally uses java.util.Random
+- ThreadLocalRandom: High-performance, thread-local random generator
+
+### Notes regarding the Assignment:
+
+1. Highlights of examples of class definition, method definition, class attribute, object instantiation and accessibility are displayed in the comments using the "This is an example of..." comment
+2. The additional validation check for populate method was added. It checks the validity of the method parameters for not being negative or out of range in the case of `randNumGen` parameter
+3. The class attribute `sampleSizes` was used by the `execute()` method. Although the class could be extended to support selecting the sample size with command line arguments, this functionality was omitted to avoid deviating from the main assignment.
