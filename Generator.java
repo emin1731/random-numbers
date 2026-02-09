@@ -126,15 +126,16 @@ public class Generator {
      */
     void display(ArrayList<Double> results, boolean headerOn)
     {
-        System.out.println("--------------------------------------------------------------------");
+        // Print the header if headerOn is true
         if (headerOn) {
+                System.out.println("--------------------------------------------------------------------");
                 System.out.printf("%-15s %-15s %-15s %-15s %-15s%n","n", "Mean", "Std Dev", "Min", "Max");
-            }
+        }
         System.out.println("--------------------------------------------------------------------");
 
+        // Print the results in a formatted manner. the "-15.6f" format specifier is used to left-align the numbers and display them with 6 decimal places. 15 characters are reserved for each number, and if the number has fewer than 15 characters, it will be padded with spaces on the right to ensure proper alignment in the output.
         System.out.printf("%-15.0f %-15.6f %-15.6f %-15.6f %-15.6f%n", results.get(0), results.get(1), results.get(2), results.get(3), results.get(4));
         
-        System.out.println();
         System.out.println("--------------------------------------------------------------------");
 
     }
@@ -147,6 +148,7 @@ public class Generator {
      */
     void execute()
     {
+        // This variable is used to control the visibility of the header in the display method. 
         boolean headerOn = true;
 
         for(int sampleSize : sampleSizes) {
